@@ -16,7 +16,6 @@ public:
   void closeFile();
   string getLine();
   int getNumber();
-  // string* getSection();
   Transition** getTransition();
 };
 

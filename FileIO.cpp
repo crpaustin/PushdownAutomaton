@@ -65,22 +65,3 @@ Transition** FileIO::getTransition() {
   }
   return output;
 }
-
-// string* getSection() {
-//   string output[5];
-//   string buffer;
-//   getline(file, buffer, ' ');
-//   int currentChar = 0;
-//   int currentIndex = 0;
-//   while(currentIndex < 5) {
-//     int prevChar = currentChar;
-//     while(buffer[currentChar] != ',') currentChar++;
-//     output[currentIndex] = buffer.substr(prevChar, currentChar - prevChar);
-//     currentChar++;
-//     currentIndex++;
-//   }
-//   // for(unsigned int i = 0; i < output.length(); i++) {
-//   //   if(output[i] == ',') output.erase(output.begin()+i);
-//   // }
-//   return output;
-// }
