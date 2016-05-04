@@ -9,3 +9,6 @@ del Machine.o
 del main.o
 del State.o
 del Transition.o
+pause
+cls
+project

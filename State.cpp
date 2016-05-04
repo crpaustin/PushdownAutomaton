@@ -7,7 +7,7 @@ State::State(int charCount, bool isFinal) {
   // for(int i = 0; i < numTransitions; i++) {
   //   transitions[i] = NULL;
   // }
-  this->isFinal = isFinal;
+  this->finalState = isFinal;
 }
 
 State::~State() {
@@ -23,4 +23,8 @@ void State::addTransition(Transition** transition) {
 
 int State::doTransition(int input, stack<char>* stackOne, stack<char>* stackTwo) {
   return transitions[input]->doTransition(stackOne, stackTwo);
+}
+
+bool State::isFinal() {
+  return finalState;
 }

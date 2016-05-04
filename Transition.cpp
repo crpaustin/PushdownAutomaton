@@ -14,13 +14,29 @@ Transition::~Transition() {
 }
 
 int Transition::doTransition(stack<char>* stackOne, stack<char>* stackTwo) {
-  if(popOffOne != "!") stackOne->pop();
+  if(popOffOne != "!") {
+    for(unsigned int i = 0; i < popOffOne.length(); i++) {
+      if(popOffOne[i] == stackOne->top()) {
+        stackOne->pop();
+      } else {
+        return -1;
+      }
+    }
+  }
   if(pushOnOne != "!") {
     for(unsigned int i = 0; i < pushOnOne.length(); i++) {
       stackOne->push(pushOnOne[i]);
     }
   }
-  if(popOffTwo != "!") stackTwo->pop();
+  if(popOffTwo != "!") {
+    for(unsigned int i = 0; i < popOffTwo.length(); i++) {
+      if(popOffTwo[i] == stackTwo->top()) {
+        stackTwo->pop();
+      } else {
+        return -1;
+      }
+    }
+  }
   if(pushOnTwo != "!") {
     for(unsigned int i = 0; i < pushOnTwo.length(); i++) {
       stackTwo->push(pushOnTwo[i]);

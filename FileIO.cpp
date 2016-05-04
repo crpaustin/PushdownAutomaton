@@ -36,8 +36,7 @@ string FileIO::getLine() {
 int FileIO::getNumber() {
   int output;
   file >> output;
-  string trash;
-  getline(file, trash);
+  file.ignore(256, '\n');
   return output;
 }
 

@@ -81,13 +81,12 @@ int main() {
     while(runType < 1 || runType > 2) {
       cout << "(1) Step By Step" << endl << "(2) Fast Run" << endl << "Choice: ";
       cin >> runType;
-      string trash;
-      getline(cin, trash);
+      cin.ignore(256, '\n');
     }
     if(runType == 1) {
-      machine->doStep(input);
+      machine->doStep(alphabet, input);
     } else {
-      machine->doAll(input);
+      machine->doAll(alphabet, input);
     }
     cout << "Type an input or -q to quit." << endl << "Input: ";
     getline(cin, input);
