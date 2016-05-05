@@ -16,7 +16,7 @@ Transition::~Transition() {
 int Transition::doTransition(stack<char>* stackOne, stack<char>* stackTwo) {
   if(popOffOne != "!") {
     for(unsigned int i = 0; i < popOffOne.length(); i++) {
-      if(popOffOne[i] == stackOne->top()) {
+      if(!stackOne->empty() && popOffOne[i] == stackOne->top()) {
         stackOne->pop();
       } else {
         return -1;
@@ -30,7 +30,7 @@ int Transition::doTransition(stack<char>* stackOne, stack<char>* stackTwo) {
   }
   if(popOffTwo != "!") {
     for(unsigned int i = 0; i < popOffTwo.length(); i++) {
-      if(popOffTwo[i] == stackTwo->top()) {
+      if(!stackTwo->empty() && popOffTwo[i] == stackTwo->top()) {
         stackTwo->pop();
       } else {
         return -1;

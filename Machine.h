@@ -15,6 +15,7 @@ private:
 public:
   Machine(State** states, int numStates);
   virtual ~Machine();
+  void doLambda();
   void doStep(string alphabet, string input);
   void doAll(string alphabet, string input);
 };

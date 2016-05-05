@@ -15,6 +15,15 @@ Machine::~Machine() {
   delete[] states;
 }
 
+void Machine::doLambda() {
+  // Lambda input
+  if(states[0]->isFinal()) {
+    cout << "Input accepted." << endl;
+  } else {
+    cout << "Input rejected." << endl;
+  }
+}
+
 void Machine::doStep(string alphabet, string input) {
   // Stacks one and two
   stack<char>* stackOne = new stack<char>;

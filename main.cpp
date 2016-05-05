@@ -53,42 +53,44 @@ int main() {
   string input;
   int runType; // Step by step or fast run
   bool invalid; // Invalid input marker
-  cout << "Type an input or -q to quit." << endl << "Input: ";
+  cout << "Type an input or -q to quit." << endl << "Input (! for lambda): ";
   getline(cin, input);
   while(input != "-q") {
-
-    // Check for invalid characters
-    invalid = false; // Innocent until proven guilty
-    for(unsigned int i = 0; i < input.length() && !invalid; i++) {
-      bool found = false;
-      for(unsigned int j = 0; j < alphabet.length(); j++) {
-        if(input[i] == alphabet[j]) found = true;
-      }
-      if(!found) {
-        cout << "Invalid input." << endl;
-        invalid = true;
-      }
-    }
-    // If character is invalid, start over
-    if(invalid) {
-      cout << "Type an input or -q to quit." << endl << "Input: ";
-      getline(cin, input);
-      continue;
-    }
-
-    // Get run type - step by step or fast run
-    runType = 0;
-    while(runType < 1 || runType > 2) {
-      cout << "(1) Step By Step" << endl << "(2) Fast Run" << endl << "Choice: ";
-      cin >> runType;
-      cin.ignore(256, '\n');
-    }
-    if(runType == 1) {
-      machine->doStep(alphabet, input);
+    // Check for invalid characters if not equal to lambda
+    if(input.length() == 1 && input[0] == '!') {
+      machine->doLambda();
     } else {
-      machine->doAll(alphabet, input);
+      invalid = false; // Innocent until proven guilty
+      for(unsigned int i = 0; i < input.length() && !invalid; i++) {
+        bool found = false;
+        for(unsigned int j = 0; j < alphabet.length(); j++) {
+          if(input[i] == alphabet[j]) found = true;
+        }
+        if(!found) {
+          cout << "Invalid input." << endl;
+          invalid = true;
+        }
+      }
+      // If character is invalid, start over
+      if(invalid) {
+        cout << "Type an input or -q to quit." << endl << "Input (! for lambda): ";
+        getline(cin, input);
+        continue;
+      }
+      // Get run type - step by step or fast run
+      runType = 0;
+      while(runType < 1 || runType > 2) {
+        cout << "(1) Step By Step" << endl << "(2) Fast Run" << endl << "Choice: ";
+        cin >> runType;
+        cin.ignore(256, '\n');
+      }
+      if(runType == 1) {
+        machine->doStep(alphabet, input);
+      } else {
+        machine->doAll(alphabet, input);
+      }
     }
-    cout << "Type an input or -q to quit." << endl << "Input: ";
+    cout << "Type an input or -q to quit." << endl << "Input (! for lambda): ";
     getline(cin, input);
   }
   // End
